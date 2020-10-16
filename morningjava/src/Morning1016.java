@@ -8,7 +8,7 @@ public class Morning1016 {
         for(int i=0; i<5; i++) {
             for(int j=0; j<5; j++) {
                 regAry[i][j] = cnt++;
-            }
+             }
         }
         // 값을 출력.
         for(int i=0; i<5; i++) {
