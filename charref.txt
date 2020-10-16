@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+ <head>
+  <title>webapp/charref.html</title>
+  <meta charset='utf-8' />
+  <meta></meta>
+ </head>
+ <body>
+ <header>
+   <h1>&lt;HTML특수문자&gt;</h1>
+ </header>
+ <content>
+	&amp;HTML5&amp;
+ </content>
+ </body>
+</html>
