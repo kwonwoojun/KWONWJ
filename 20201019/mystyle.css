@@ -1,6 +1,7 @@
 /* mystyle.css */
 div {
-    background: beige;
-    border: blue;
-    
+    background-color: beige;
+    border-color: blue;
+    border-width: 1px;
+    border-style: dashed;
 }

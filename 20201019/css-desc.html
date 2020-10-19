@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css-desc.html</title>
+    <style>
+        div>ul>li {
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Descendant Selector_1</h2>
+        <ul>후손 선택자
+            <li>1</li>
+            <li>2</li>
+            <li>
+                <h2>후손...</h2>
+                <ul>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <h2>Descendant Selector_2</h2>
+    <p>또다른 요소.</p>
+</body>
+</html>

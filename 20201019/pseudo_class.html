@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo_class.html</title>
+    <style>
+        a:link {
+            background-color: antiquewhite;
+        }
+        a:visited{
+            background-color: green;
+        }
+        a:active {
+            background-color: pink;
+        }
+        a:hover {
+            background-color: red;
+        }
+        a:focus {
+            background-color: yellow;
+        }
+        td {
+            display: block;
+            background-color: bisque;
+        }
+
+        td:nth-child(3) {
+            background-color: pink;
+        }
+        td:nth-of-type(3n) {
+            background-color: blueviolet;
+        }
+        td:first-child {
+            color: skyblue;
+        }
+        td:last-child {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="basic.html">Basic</a>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+</body>
+</html>
