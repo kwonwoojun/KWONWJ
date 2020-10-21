@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+        .item1 { grid-area: header; }
+        .item2 { grid-area: main; }
+        .item3 { grid-area: left; }
+        .item4 { grid-area: right; }
+        .item5 { grid-area: footer; }
+        .item6 { grid-area: navigator;}
+        
+        .grid-container {
+          grid-template-columns: 120px 1fr 120px;
+          grid-template-rows: 3fr 30px 9fr 1fr;
+          display: grid;
+          grid-template-areas:
+                "header header header"
+                "navigator navigator navigator"
+                "left    main   right"
+                "footer footer footer";
+          grid-gap: 2px;
+          background-color: #000000;
+          padding: 2px;
+        }
+        
+        .grid-container > div {
+          background-color: #f5f5e6ea;
+          text-align: center;
+          padding: 30px 1;
+          font-size: 20px;
+        }
+        .item1 {
+          background-color: #1a0303;
+        }
+        
+        </style>
+        </head>
+        <body>
+        
+        
+        
+        <div class="grid-container">
+        
+          <div class="item1"><p><img src="../welcome.jpg" style="width: 100%; height: 150px" ></p></div>
+          <div class="item6">이전페이지 메인페이지 다음페이지</div>
+          <div class="item2">Contents <p></p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea cum perspiciatis rem quia! Perspiciatis non velit ut. Totam nisi possimus molestiae necessitatibus laborum fugiat quam veritatis reiciendis, dignissimos a voluptatum?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore ea doloribus tempore minima error voluptatibus dolores veniam animi eum ipsum veritatis doloremque in tenetur illum sint pariatur minus, voluptas fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, tempore sed delectus voluptates quas doloremque ipsum in a cupiditate inventore saepe dolor alias, veniam omnis assumenda rerum cum possimus. Aperiam.</div>
+          <div class="item3">leftAD</div>
+          <div class="item4">RightAD</div>
+          <div class="item5"><p></p>2020년 10월 21일&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BY.JUN </div>
+        </div>
+        
+        </body>
+</html>

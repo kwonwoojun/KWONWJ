@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>translate.html</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            background: yellow;
+            border : 1px solid yellowgreen;
+        }
+        div#box1:hover {
+            transform: rotate(360deg);
+            transition: width 3s, height 3s, border 3s, transform 3s;
+        }
+        div#box2 {
+            transform: skewY(10deg);
+        }
+    </style>
+</head>
+<body>
+    <div id = "box1">1</div>
+    <div id = "box2">2</div>
+    
+</body>
+</html>
