@@ -56,3 +56,24 @@ for(let i = 0; i < 7; i++) {
 };
 
 show.append(ul);
+
+for(day of days) {
+    let li = document.createElement('li');
+    ul.append(li);
+    li.innerHTML = day;
+}
+
+// 1.
+// let ul = document.createElement('ul');
+// ul.setAttribute('class','ul');
+
+// 2.
+// /* <ul><li>일요일</li><li>월요일</li>...</ul> */
+// let ulTags = '<ul>';
+// for(let i=0; i<days.length; i++) {
+//     ultags += '<li>' + days[i] + '</li>';
+// }
+// ultags += '</ul>';
+// console.log(ulTags);
+// document.write(ulTags);
+
