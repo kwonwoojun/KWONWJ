@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Tutorial</title>
+</head>
+<body id = 'show'>
+    <h1>DOM Lesson one</h1>
+    <p>Hello world!</p>
+    <!-- <table border='1'>;
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>직업</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>16</td>
+            <td>학생</td>
+        </tr> -->
+
+    </table>
+    <script>
+        console.log(document.body.childNodes[1].childNodes[0].nodeValue = 'Dom Lesson Two');
+        console.log(document.body.childNodes[3].childNodes[0].nodeValue = 'Good Moring World');
+        let div = document.createElement('div');
+        div.className = 'row';
+        div.setAttribute('id','row');
+        let text = document.createTextNode('Hello, world');
+        div.append(text);
+        console.log(div);
+
+        let $body = document.getElementsByTagName('p');
+        $body[0].before(div);
+        
+
+        let person1 = {
+            이름: '홍길동',
+            나이: 16,
+            직업: '학생'
+        }
+        let table2 = document.createElement('table');
+        table2.setAttribute('border','1');
+        let tr = document.createElement('tr');
+        for(field in person1) {
+            let td = document.createElement('td');
+            let text = document.createTextNode(field);
+            td.append(text);
+            tr.append(td);
+        }
+        table2.append(tr);
+        tr = document.createElement('tr');
+        for ( field in person1) {
+            let td = document.createElement('td');
+            let text = document.createTextNode(person1[field]);
+            td.append(text);
+            tr.append(td);
+        }
+        table2.append(tr);
+        let body = document.querySelector('#show');  //ID 지정하면 # 넣기
+        body.append(table2);
+
+
+        // let table = document.createElement('table');
+        // table.setAttribute('border','1');
+        // let tr = document.createElement('tr');
+        // let td = document.createElement('td');
+        // text = document.createTextNode('이름');
+        // td.append(text);
+        // tr.append(td);
+        // td = document.createElement('td');
+        // text = document.createTextNode('나이');
+        // td.append(text);
+        // tr.append(td);
+        // td = document.createElement('td');
+        // text = document.createTextNode('직업');
+        // td.append(text);
+        // tr.append(td);
+        // table.append(tr);
+        // document.querySelector('body').append(table);
+
+
+        // let body = document.querySelector('body');
+        // body.append(table);
+
+
+
+        
+        
+
+        
+        
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event.html</title>
+</head>
+<body>
+    <input type="text" name="name" value="KWON"><br>
+    <input type="text" name="age" value="28"><br>
+    <input type="text" name="job" value="교육생"><br>
+    <button id ='btn'>입력</button><br>
+    <div style="height: 10px;"></div>
+
+    <table id='tbl' border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>직업</th>
+            <th>기능</th>
+        </tr>
+        <!-- <tr>
+            <td>KWON</td>
+            <td>28</td>
+            <td>Free</td>
+        </tr> -->
+
+    </table>
+    <script>
+        let btn = document.getElementById('btn');
+        // btn.onclick = function () {                  //1번 방법
+        // }
+        // btn.addEventListener('click', function() {   //2번 방법
+            
+        // });
+        btn.addEventListener('click', myCallBackFunc );
+        btn.addEventListener('mouseover', myMouseOverFunc);
+        btn.addEventListener('mouseout', myMouseOutFunc);
+        function myMouseOverFunc() {}
+        function myMouseOutFunc () {}
+
+        function myCallBackFunc() {  
+           let inputs = document.getElementsByTagName('input');
+           let name = inputs[0].value;
+           let age = inputs[1].value;
+           let job = inputs[2].value;
+
+           if (name == null || name == '') {
+               window.alert('이름을 입력하세요.');
+               return;
+           }
+           if(!age) {
+               window.alert('나이를 입력하세요.');
+               return;
+           }
+           if(!job) {
+               window.alert('직업을 입력하세요.');
+               return;
+           }
+
+           let tr = document.createElement('tr');
+
+           // name 생성
+           let td = document.createElement('td');
+           let text = document.createTextNode(name);
+           td.append(text);
+           tr.append(td);
+           // age 생성
+           td = document.createElement('td');
+           text = document.createTextNode(age);
+           td.append(text);
+           tr.append(td);
+           // job 생성
+           td = document.createElement('td');
+           text = document.createTextNode(job);
+           td.append(text);
+           tr.append(td);
+           // 버튼 생성.
+           let btn = document.createElement('button');
+           text = document.createTextNode('Del');
+           btn.onclick = function () {
+               console.log(this.parentNode.previousSibling.previousSibling.childNodes[0].nodeValue);
+               this.parentNode.parentNode.remove();
+           }    
+           btn.append(text);
+           td = document.createElement('td');
+           td.append(btn);
+           tr.append(td);
+
+           document.getElementById('tbl');
+           tbl.append(tr);                                      //1번방법
+        // let table = document.getElementsByTagName('table');  //2번방법
+        // console.log(table[0]);
+        // table[0].append(tr);
+        
+           inputs[0].value = "";
+           inputs[1].value = "";
+           inputs[2].value = "";
+           inputs[0].focus();
+
+        }
+    </script>
+    
+</body>
+</html>

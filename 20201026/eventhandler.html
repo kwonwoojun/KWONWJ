@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventhandler.html</title>
+</head>
+<body>
+    <div id = "show"></div>
+    
+    <script>
+        let person1 = {
+            name: 'Hong',
+            age: 20,
+            id: 'user1',
+            url: 'http://www.daum.net'
+        }
+        let person2 = {
+            name: 'kwon',
+            age: 28,
+            id: 'user2',
+            url: 'http://www.google.com'
+        }
+        let person3 = {
+            name: 'Kim',
+            age: 25,
+            id: 'user3',
+            url: 'http://www.naver.com'
+        }
+        let members = [person1, person2, person3];
+
+        let table, tr, td, text;
+        table = document.createElement('table');
+        table.border = '1';
+        
+        for(member of members) {
+            tr = document.createElement('tr');
+            let url;
+            for(field in member) {
+                if (field == 'url') {
+                url = member[field];
+                let aTag = document.createElement('a');
+                aTag.href = member[field];
+                text = document.createTextNode (member[field]); //값..
+                aTag.append(text);
+                td = document.createElement('td')
+                td.append(aTag);
+                tr.append(td);
+                } else {
+                text = document.createTextNode(member[field]);
+                td = document.createElement('td');
+                td.append(text);
+                tr.append(td);
+                }
+                
+            }
+            
+        
+            table.append(tr);
+        }
+        
+        let btn = document.createElement('button');
+            btn.innerHTML = '링크';
+            btn.onclick = function() {
+                location.href = url;
+                
+            }
+            td = document.createElement('td');
+            td.append(text);
+            tr.append(td);
+
+            table.append(tr);
+
+        let show = document.getElementById('show');
+        show.append(table);
+
+    </script>
+    
+</body>
+</html>

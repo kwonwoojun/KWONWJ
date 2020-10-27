@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xmlhttp.html</title>
+</head>
+    <!-- id, first_name, last_name, gender, email; -->
+    <!-- tr id=id값 -->
+<body>
+    <div id="show"></div>
+    <script>
+        // Ajax: 비동기처리방식.
+        
+        let xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function() {
+          if(xhtp.readyState == 4 && xhtp.status == 200) {
+               
+            let data = JSON.parse(xhtp.responseText);
+            console.log(data);
+            let tr, td
+            let show = document.getElementById('show');
+            let table = document.createElement('table');
+            table.border = '1';
+            tr = document.createElement('tr');
+                
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = ('id');
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = ('first_name');
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = ('last_name');
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = ('gender');
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = ('email');
+
+                table.append(tr);
+            for (person of data) {
+                tr = document.createElement('tr');
+                
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person.id;
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person.first_name;
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person.last_name;
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person.gender;
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person.email;
+
+                table.append(tr);
+            }   
+            show.append(table);
+            
+            let show2 = document.getElementById('show');
+            let table2 = document.createElement('table');
+            table2.border = '1';
+            tr = document.createElement('tr');
+
+            for(per in data[0]) {
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = per;
+            }
+            table2.append(tr);
+
+            for (person of data) {
+                tr = document.createElement('tr');
+                for (per in person) {
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML = person[per];
+                }
+               
+                table2.append(tr);
+            }
+            show2.append(table2);
+          }
+        }
+        xhtp.open('get', 'MOCK_DATA.json');
+        xhtp.send();
+
+        
+
+        
+
+
+    </script>
+</body>
+</html>

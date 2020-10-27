@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xmlhttp.html</title>
+</head>
+
+<body>
+    <div id="show"></div>
+    <script>
+        // console.log(window);
+        // Ajax: 비동기처리방식.
+
+        let xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function () {
+            if (xhtp.readyState == 4 && xhtp.status == 200) {
+                // let data = JSON.parse(xhtp.responseText);
+                // loadJson(data);
+               
+                // let data = (xhtp.responseXML);
+                // loadXml(data);
+                let data = xhtp.responseXML;
+                data = data.getElementsByTagName('record');
+                // for (let i = 0; i< data.length; i++)
+                //     for(let j=0; j < data[i].children.length; j++)
+                // console.log(data[i].children[j].innerHTML);
+                console.log('id:' + data[0].children[0].firstChild.nodeValue);
+                console.log('fn:' + data[0].children[1].firstChild.nodeValue);
+                console.log('ln:' + data[0].children[2].innerHTML);
+                console.log(data[1].children[1]);
+
+                loadXml(data);
+            }
+        }
+        xhtp.open('get', 'dataset.xml');
+        xhtp.send();
+
+        // loadXml
+        function loadXml(data) {
+           let show2 = document.getElementById('show');
+           let table2 = document.createElement('table');
+           table2.border = '1';
+           tr = document.createElement('tr');
+            
+            for (let i = 0; i < data[0].children.length; i++){
+                tr = document.createElement('tr');
+                for (let i = 0; i < data[0].children.length; i++) {
+                td = document.createElement('td');
+                tr.append(td)
+                td.innerHTML =  data[0].children[i].innerHTML;
+                }
+               
+                table2.append(tr);
+            }
+            show2.append(table2);
+        }
+        
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+    <script>
+        let data, length;
+        let xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200) {
+                console.log(this.responseXML);
+                data = this.responseXML;
+                data = data.getElementsByTagName('record');
+                length = data.length;
+                showRecord(1);
+            }
+        }
+        xhtp.open('get','dataset.xml');
+        xhtp.send();
+
+        function showRecord(order) {
+            let tag = document.createElement('ul');
+            for(let i = 0; i<data[order].children.length; i++) {
+            console.log(data[order].children[i].innerHTML);
+            let li = document.createElement('li');
+                let text = document.createTextNode(
+                data[order].children[i].innerHTML
+                );
+            li.append(text);
+            tag.append(li);
+            }
+            show = document.getElementById('show');
+            show.children[0].remove();
+            show.append(tag);
+        }
+    </script>
+</head>
+<body>
+    <button id="prev"><<</button>
+    <button id="next">>></button>
+    <div id="show"><a href=""></a></div>
+    <script>
+        let i = 1;
+        let prev = document.getElementById('prev');
+        prev.onclick = function() {
+            if(i > 0)
+            i--;
+            showRecord(i);
+        }
+        let next = document.getElementById('next');
+            next.addEventListener('click', function () {
+            if(i < length -1)
+            i++;
+            showRecord(i)
+        })
+    </script>
+</body>
+</html>
