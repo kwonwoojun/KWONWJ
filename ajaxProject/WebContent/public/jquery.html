@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>public/jquery.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div id="show">
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <!-- <li>Four</li> -->
+        </ul>
+    </div>
+    <!-- <div id="fruits">
+        <li>apple</li>
+        <li>banana</li>
+        <li>mango</li>
+    </div> -->
+    <script>
+        // $("#show>ul>li").eq(0).htmlc('Hello');    // document.getElementById('show').innerHTML =  'Hello';
+        // let lis = document.querySelector("#show>ul>li");
+        // lis[0].innerHTML = 'Hello';
+
+        // let li = document.createElement('li');
+        // let text = document.createTextNode('four');
+        // li.append(text);
+        // let ul = document.querySeletorAll('#show>ul');
+        // ul[0].append(li);
+
+        $("#show>ul").append($("<li />").html("Four"));
+        $("#show").attr("name","hong").attr("class", "content");
+
+        
+        // $("#divv").append($("<ul />").append($("<li />").html("apple")));
+        // $("#divv>ul").append($("<li />").html("banana"));
+        // $("#divv>ul").append($("<li />").html("mango"));
+
+
+        // div.append($('<li />').html('apple'));
+        // div.append($('<li />').html('banaba'));
+        // div.append($('<li />').html('mango'));
+        let fruits = ['apple', 'banana', 'mango'];
+
+        let div = $('<div />').attr('id','fruits');
+        let ul = ($('<ul />'));
+        div.append(ul);
+        for (fruit of fruits) {
+            ul.append($('<li />').html(fruit));
+        }
+        
+        $('#show').after(div);
+
+
+        
+        
+       
+
+        
+
+        
+
+
+    </script>
+</body>
+
+</html>
