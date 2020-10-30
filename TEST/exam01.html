@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exam01.html</title>
+</head>
+
+<body>
+    <script>
+        function sum() {
+           calc.result.value = plus(calc.left.value, calc.right.value);
+            }
+        function plus(left, right) {
+           
+            return Number(left) + Number(right);
+        }
+
+
+    </script>
+    <form name="calc">
+        <input type="text" name="left" />
+        +
+        <input type="text" name="right" />
+        <br />
+        <input type="button" value="계산" onClick="sum()" />
+        <br />
+        <input type="text" name="result" readonly /><br />
+    </form>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+function showList(result) {
+console.log(result);
+let data = result;
+let id = $(this).attr('id');
+
+$('#eid').val(result.id);
+$('#fName').val(result.firstName);
+$('#lName').val(result.lastName);
+$('#email').val(result.email);
+$('#salary').val(result.salary);
+}

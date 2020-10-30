@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_traversing.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        let students = [];
+        $(document).ready(function () {
+            $('#ok').on('click', function () {
+                let gkrqjs = $('input[name="gkrqjs"]').val();
+                let name = $('input[name="name"]').val();
+                let grade = $('input[name="grade"]').val();
+                let major = $('input[name="major"]').val();
+
+                let student = {};
+                student.gkrqjs = gkrqjs;
+                student.name = name;
+                student.grade = grade;
+                student.major = major;
+
+                console.log(student);
+                students.push(student);
+                console.log(students);
+            });
+            // 생성버튼 클릭 이벤트...
+            $('#create').on('click', function () {
+                students.forEach(function (item, idx) {
+                    let tr = $('<tr />');
+                    for(field in item) {
+                        tr.append($('<td />').html(item[field]));
+                    }
+                   $('#tbl').append(tr);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="input">
+        <input type="text" name="gkrqjs" placeholder="학번">
+        <input type="text" name="name" placeholder="이름">
+        <input type="text" name="grade" placeholder="학년">
+        <input type="text" name="major" placeholder="전공">
+        <button id="ok">OK</button>
+    </div>
+    <button id="create">생성</button>
+    <div id="show">
+        <table id="tbl" border="1">
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>학년</th>
+                <th>전공</th>
+                
+                
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
