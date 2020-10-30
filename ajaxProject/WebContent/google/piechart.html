@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>google/piechart.html</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	  let resultAry = [
+		  ['Dept', 'Members Dept']
+	  ];
+      let xhtp = new XMLHttpRequest();
+      xhtp.onreadystatechange = function() {
+    	  if(xhtp.readyState == 4 && xhtp.status == 200) {
+    		  let data = xhtp.response;
+    		  for(let i=0; i<data.length; i++) {
+    			  let iAry = [];
+    			  for(field in data[i]) {
+    				  iAry.push(field);	//iAry의 배열에 필드추가.
+    				  iAry.push(data[i][field]); //iAry의 배열에 필드[값]추가.
+    			  }
+    			  resultAry.push(iAry);
+    		  }
+    		  console.log(resultAry);
+    	  }
+      }
+      xhtp.open('get', '../GetMemberPerDeptServ');
+      xhtp.send();
+      xhtp.responseType = 'json';
+      
+      google.charts.load('current', {
+    	  'packages':['corechart']
+      });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+		var temp = [
+          ['Task', 'Hours per Day'],
+          ['일',     10],
+          ['식사',    5],
+          ['커뮤트',   2],
+          ['TV보기',  3],
+          ['잠',     10]
+        ];
+		temp = resultAry;
+        
+        var data = google.visualization.arrayToDataTable('temp');
+        
+        var options = {
+                title: '파이차트활용'
+              };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+	<div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
