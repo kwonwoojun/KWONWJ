@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+    <!-- left select -->
+    <select id="left" multiple style="width: 250px; height: 300px; font-size:25px">
+        <option value="야구">야구 </option>
+        <option value="볼링">볼링</option>
+        <option value="축구">축구</option>
+        <option value="배구">배구</option>
+        <option value="농구">농구</option>
+        <option value="하키">하키</option>
+    </select>
+    <!-- move Button -->
+    <button id='left2'><< </button> <button id='left1'>< </button> <button id='right1'> ></button>
+    <button id='right2'> >> </button>
+    <!-- right select -->
+    <select id="right" multiple style="width: 250px; height: 300px;"></select>
+
+    <script>
+        $(document).ready(function () {
+
+            // >> 오른쪽으로 모두이동
+            $('#right2').click(function () { //id로 호출할때는 # 붙여야한다. #id로 호출
+                for (let i = 0; i < left.length; i++) {
+                    $('#right').append('<option>' + left.options[i].value + '</option>');
+                }
+                $('#left').empty();
+                $('#right').append($('#left > option'))
+            })
+            // << 왼쪽으로 모두 이동
+            $('#left2').click(function () { //id로 호출할때는 # 붙여야한다. #id로 호출
+                for (let i = 0; i < right.length; i++) {
+                    $('#left').append('<option>' + right.options[i].value + '</option>');
+                }
+                $('#right').empty();
+                $('#left').append($('#right > option'))
+            })
+
+            // < 선택된 것만 왼쪽으로 이동
+            $('#left1').click(function () { //id로 호출할때는 # 붙여야한다. #id로 호출
+                $('#left').append($('#right > option:selected'))
+            })
+
+            // > 선택된 것만 오른쪽으로 이동
+            $('#right1').click(function () { //id로 호출할때는 # 붙여야한다. #id로 호출
+                $('#right').append($('#left > option:selected'))
+            })
+        })
+    </script>
+
+</body>
+
+</html>

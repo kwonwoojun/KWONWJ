@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1105_mock data 테이블에 뿌리기 (ajax)</title>
+    <script src="jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <h1>mock data를 테이블에 뿌리기</h1>
+    <button id="selDel">선택삭제</button>
+    <table id="tbl" border="1"></table>
+
+    <script>
+        $.ajax({
+            url: '1105_mock.json',
+            dataType: "json",
+            success: function (data) {
+                let result = data;
+
+                let tr = $('<tr />');
+
+
+                //전체선택
+                let th = $('<th />');
+                let checkBox = $('<input />').attr('type', 'checkBox').attr('id', 'allCheck');
+                th.append(checkBox);
+                tr.append(th);
+                //end of check
+
+                for (thField in result[0]) //in : object. 필드 이름가져옴 [1]해도됨
+                {
+                    let th = $('<th />').html(thField);
+                    tr.append(th);
+                }
+
+
+                //전체삭제
+                th = $('<th />');
+                let delBtn = $('<input />').attr('type', 'button').attr('value', '전체삭제').attr('id', 'allDel');
+                th.append(delBtn);
+                tr.append(th);
+                //end
+
+
+                //전체복사
+                th = $('<th />');
+                let copyBtn = $('<input />').attr('type', 'button').attr('value', '전체복사').attr('id', 'allCopy');
+                th.append(copyBtn);
+                tr.append(th)
+                //end
+
+
+
+                $('#tbl').append(tr);
+
+                console.log(result);
+
+                result.forEach(function (item, item2) { //of //item2 = index
+                    let tr = $('<tr />');
+                    $('#tbl').append(tr);
+
+
+                    //체크박스
+                    let td = $('<td />');
+                    let checkBox = $('<input />').attr('type', 'checkBox').attr('id', 'check');
+                    td.append(checkBox);
+                    tr.append(td);
+                    //end
+
+
+                    for (tdField in item) {
+                        let td = $('<td />').html(item[tdField]);
+                        tr.append(td);
+                    }
+
+                    //삭제버튼
+                    td = $('<td />');
+                    let delBtn = $('<input />').attr('type', 'button').attr('value', '삭제').attr('id', 'del'+item.id+'').attr('name', 'del');
+                    td.append(delBtn);
+                    tr.append(td);
+                    //end
+
+
+                    //복사버튼
+                    td = $('<td />');
+                    let copyBtn = $('<input />').attr('type', 'button').attr('value', '복사').attr('id', 'copy'+item.id+'').attr('name', 'copy').attr('class', 'copy');
+                    td.append(copyBtn);
+                    tr.append(td);
+                    //end
+
+
+                    //삭제 함수 구현 (tr삭제)
+                    $('#del'+item.id+'').click(function () {
+                        $(this).parent().parent().remove();
+                    });
+
+
+                    //복사 함수 구현 (tr삭제)
+                    $('#copy'+item.id+'').click(function () {
+                        let copy = $(this).parent().parent().clone();
+                        let paste =$(this).parent().parent();
+
+                        // console.log($(this).parent().parent()[0]);
+                        console.log(paste[0]);
+
+                        paste.after(copy);
+                    });
+                });
+
+
+                //전체 선택 함수 구현
+                $('#allCheck').click(function () {
+                    //만약 전체 선택 체크박스가 체크된상태일경우 
+                    if ($("#allCheck").prop("checked")) {
+                        $("td>#check").prop("checked", true);
+                    } 
+                    else { 
+                        $("td>#check").prop("checked", false);
+                    }
+                });
+
+
+                //전체 삭제 함수 구현
+                $('#allDel').click(function () {
+                    $("[name = 'del']").parent().parent().remove();
+                });
+
+
+                //선택 삭제 함수 구현
+                $('#selDel').click(function () {
+                  $('#check:checked').parent().parent().remove();     
+
+                });
+
+                
+                //전체 복사 함수 구현
+                $('#allCopy').click(function () {
+                    let copy = $('.copy').parent().parent().clone();
+                    let paste =$(this).parent().parent().parent();
+
+                   // paste.after(copy);
+                   paste.append(copy);
+                });
+
+            },
+            error: function () {
+                console.log(new Error('실행 중 에러 발생'));
+            }
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
